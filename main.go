@@ -23,12 +23,13 @@ func main() {
 	flag.StringVar(&output, "output", "", "Output file path")
 
 	flag.Usage = func() {
-		fmt.Fprintf(os.Stderr, "Usage: %s [options] <input_sparse_image>\n\n", os.Args[0])
+		fmt.Fprintf(os.Stderr, "Usage: %s [options] <input_sparse_image> [output_raw_image]\n\n", os.Args[0])
 		fmt.Fprintf(os.Stderr, "Convert Android sparse image to raw image\n\n")
 		fmt.Fprintf(os.Stderr, "Options:\n")
 		flag.PrintDefaults()
 		fmt.Fprintf(os.Stderr, "\nExamples:\n")
 		fmt.Fprintf(os.Stderr, "  %s system.img\n", os.Args[0])
+		fmt.Fprintf(os.Stderr, "  %s system.img system_raw.img\n", os.Args[0])
 		fmt.Fprintf(os.Stderr, "  %s -v -o system_raw.img system.img\n", os.Args[0])
 	}
 
@@ -46,8 +47,13 @@ func main() {
 		os.Exit(1)
 	}
 
+	// Output dari: -o flag > arg ke-2 > default (input.raw)
 	if output == "" {
-		output = input + ".raw"
+		if flag.NArg() >= 2 {
+			output = flag.Arg(1)
+		} else {
+			output = input + ".raw"
+		}
 	}
 
 	converter := NewConverter(input, output)
