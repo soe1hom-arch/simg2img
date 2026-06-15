@@ -1,3 +1,3 @@
-module github.com/username/simg2img
+module github.com/soe1hom-arch/simg2img
 
 go 1.22.2
