@@ -1,0 +1,15 @@
+# Binaries
+simg2img
+simg2img.exe
+*.test
+*.out
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
