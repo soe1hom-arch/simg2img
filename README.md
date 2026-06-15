@@ -20,10 +20,7 @@ based on the official [AOSP sparse format specification](https://android.googles
 | DONTCARE | `0xCAC3` | Skip blocks (output as sparse holes or zeros) |
 | CRC32 | `0xCAC4` | CRC32 checksum verification (optional) |
 
-### Why another simg2img?
-
-Existing Go implementations (e.g. `kristoiv/sparse`) do not support **FILL**
-chunks and lack CLI features. This implementation:
+### Features
 
 - ✅ Supports **all** chunk types including FILL
 - ✅ CRC32 verification (`-crc` flag)
@@ -42,7 +39,7 @@ sudo apt install golang-go  # Debian/Ubuntu
 # or: brew install go       # macOS
 
 # Build
-git clone https://github.com/username/simg2img.git
+git clone https://github.com/soe1hom-arch/simg2img.git
 cd simg2img
 go build -o simg2img .
 sudo cp simg2img /usr/local/bin/
@@ -51,7 +48,18 @@ sudo cp simg2img /usr/local/bin/
 ### Using Go install
 
 ```bash
-go install github.com/username/simg2img@latest
+go install github.com/soe1hom-arch/simg2img@latest
+```
+
+### Download binary
+
+Download from [GitHub Releases](https://github.com/soe1hom-arch/simg2img/releases).
+
+```bash
+# Linux AMD64 example
+wget https://github.com/soe1hom-arch/simg2img/releases/download/v1.0.0/simg2img-linux-amd64
+chmod +x simg2img-linux-amd64
+sudo mv simg2img-linux-amd64 /usr/local/bin/simg2img
 ```
 
 ## Usage
@@ -82,18 +90,6 @@ simg2img -v system.img
 
 # With CRC32 verification
 simg2img -crc system.img
-```
-
-## Testing
-
-```bash
-go build -o simg2img .
-
-# Generate test sparse images
-python3 tests/create_sparse.py
-
-# Run conversions
-./simg2img -v test.simg
 ```
 
 ## License
