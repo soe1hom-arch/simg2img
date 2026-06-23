@@ -92,6 +92,13 @@ simg2img -v system.img
 simg2img -crc system.img
 ```
 
+## Credits
+
+- **soe1hom-arch** — Go implementation and maintenance
+- This project is a Go port of the `simg2img` utility from the
+  [Android Open Source Project (AOSP)](https://android.googlesource.com/platform/system/core/+/refs/heads/main/libsparse/sparse_format.h).
+- [AOSP sparse format](https://android.googlesource.com/platform/system/core/+/refs/heads/main/libsparse/sparse_format.h) — Sparse image format specification
+
 ## License
 
 Apache License 2.0 — see [LICENSE](LICENSE).
